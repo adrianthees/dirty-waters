@@ -2,28 +2,30 @@
 Main file to run the software supply chain smell analysis.
 """
 
-import json
 import argparse
+import json
 import logging
 import os
 import sys
+
 import requests
-from git import Repo
 
 # Allows for tool to be recognized as a package to import from
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from tool import extract_deps
-from tool import github_repo
-from tool import static_analysis
-from tool import compare_packages
-from tool import compare_commits
-from tool import get_user_commit_info
-from tool import get_pr_info
-from tool import get_pr_review
-from tool import tool_config
-from tool import report_static
-from tool import report_diff
+from tool import (
+    compare_commits,
+    compare_packages,
+    extract_deps,
+    get_pr_info,
+    get_pr_review,
+    get_user_commit_info,
+    github_repo,
+    report_diff,
+    report_static,
+    static_analysis,
+    tool_config,
+)
 
 github_token = os.getenv("GITHUB_API_TOKEN")
 if not github_token:
